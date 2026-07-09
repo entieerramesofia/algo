@@ -1,0 +1,150 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:Arial, Helvetica, sans-serif;
+    background:#f4f4f4;
+    color:#333;
+    line-height:1.6;
+}
+
+/*=========================
+  LOADER
+=========================*/
+
+#loading{
+    position:fixed;
+    inset:0;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:#111;
+    z-index:9999;
+    transition:transform .8s ease;
+}
+
+#loading img{
+    width:15vw;
+    max-width:8rem;
+    min-width:4rem;
+    animation:bounce 1s infinite;
+}
+
+#loading.slide-up{
+    transform:translateY(-100%);
+}
+
+@keyframes bounce{
+
+    0%,100%{
+        transform:translateY(0);
+    }
+
+    50%{
+        transform:translateY(-1rem);
+    }
+
+}
+
+/*=========================
+  CONTENIDO
+=========================*/
+
+#page-content{
+    display:none;
+}
+
+header{
+    background:#007BFF;
+    color:white;
+    text-align:center;
+    padding:3rem 5%;
+}
+
+header h1{
+    font-size:clamp(2rem,5vw,4rem);
+}
+
+header p{
+    margin-top:1rem;
+    font-size:clamp(1rem,2vw,1.4rem);
+}
+
+nav{
+    background:#0056b3;
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:1rem;
+    padding:1rem;
+}
+
+nav a{
+    text-decoration:none;
+    color:white;
+    padding:.8rem 1.4rem;
+    transition:.3s;
+    border-radius:.5rem;
+}
+
+nav a:hover{
+    background:white;
+    color:#0056b3;
+}
+
+main{
+    width:90%;
+    max-width:70rem;
+    margin:auto;
+    padding:3rem 0;
+}
+
+section{
+    margin-bottom:3rem;
+}
+
+section h2{
+    font-size:clamp(1.8rem,4vw,2.5rem);
+    margin-bottom:1rem;
+}
+
+section p{
+    font-size:1.1rem;
+}
+
+img{
+    display:block;
+    width:100%;
+    max-width:35rem;
+    margin:2rem auto;
+    border-radius:1rem;
+}
+
+footer{
+    background:#222;
+    color:white;
+    text-align:center;
+    padding:2rem;
+}
+
+@media (max-width:768px){
+
+    nav{
+        flex-direction:column;
+        align-items:center;
+    }
+
+    nav a{
+        width:100%;
+        max-width:15rem;
+        text-align:center;
+    }
+
+}
