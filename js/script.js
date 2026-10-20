@@ -1,15 +1,42 @@
-setTimeout(() => {
 
-    const loader = document.getElementById("loading");
-    const content = document.getElementById("page-content");
+document.addEventListener("DOMContentLoaded", () => {
+    const loading = document.getElementById("loading");
+    const dashboard = document.getElementById("page-content");
+    const clock = document.getElementById("clock");
 
-    loader.classList.add("slide-up");
+    // Mostrar la interfaz después de iniciar el sistema
+    window.setTimeout(() => {
+        loading?.classList.add("hidden");
+        dashboard?.classList.add("ready");
+    }, 900);
 
-    loader.addEventListener("transitionend", () => {
+    // Reloj digital
+    function updateClock() {
+        if (!clock) return;
 
-        loader.style.display = "none";
-        content.style.display = "block";
+        clock.textContent = new Date().toLocaleTimeString("es-MX", {
+            hour12: false
+        });
+    }
 
+    updateClock();
+    window.setInterval(updateClock, 1000);
+
+    // Botones del panel de control
+    const controlButtons = document.querySelectorAll(
+        ".control-grid button"
+    );
+
+    controlButtons.forEach((button) => {
+        button.addEventListener("click", () => {
+            controlButtons.forEach((item) => {
+                item.classList.remove("active");
+            });
+
+            button.classList.add("active");
+
+            const mode = button.dataset.mode;
+            console.log("Módulo seleccionado:", mode);
+        });
     });
-
-},3000);
+});

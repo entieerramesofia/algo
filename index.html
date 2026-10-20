@@ -1,74 +1,297 @@
+
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>HOLA MUNDO</title>
-
-    <!-- Hoja de estilos -->
+    <title>MUNDO | Futuristic System</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
-
     <!-- Pantalla de carga -->
     <div id="loading">
-        <img src="img/loading.gif" alt="Cargando">
+        <div class="loader"></div>
+        <p>INICIALIZANDO SISTEMA...</p>
+        <span>PLEASE WAIT // MUNDO OS</span>
     </div>
 
-    <!-- Contenido -->
-    <div id="page-content">
+    <!-- Interfaz principal -->
+    <div id="page-content" class="dashboard">
 
-        <header>
-            <h1>Mi Sitio Web</h1>
-            <p>Bienvenido a mi página.</p>
+        <!-- Barra superior -->
+        <header class="topbar">
+            <div class="brand">MUNDO<span>_OS</span></div>
+
+            <nav>
+                <a href="#inicio">SYS.OVERVIEW</a>
+                <a href="#nosotros">DATA.CENTER</a>
+                <a href="#servicios">MODULES</a>
+                <a href="#contacto">COMM.LINK</a>
+            </nav>
+
+            <div class="online">
+                <span class="status-dot"></span>
+                SYSTEM ONLINE
+            </div>
         </header>
 
-        <nav>
-            <a href="#">Inicio</a>
-            <a href="#">Acerca de</a>
-            <a href="#">Servicios</a>
-            <a href="#">Contacto</a>
-        </nav>
+        <!-- Paneles superiores -->
+        <main class="main-grid" id="inicio">
 
-        <main>
+            <!-- Panel izquierdo -->
+            <section class="panel left-panel">
+                <div class="panel-heading">
+                    <span>01 / VISUAL DATA</span>
+                    <span>LIVE</span>
+                </div>
 
-            <section>
+                <div class="portrait">
+                    <!-- Sustituye esta ruta por tu imagen -->
+                    <img src="img/imagen.jpg" alt="Imagen de perfil">
 
-                <h2>¿Quiénes somos?</h2>
+                    <div class="scan-line"></div>
+                    <span class="image-tag">VISUAL_SCAN_001</span>
+                    <span class="image-status">SIGNAL: ACTIVE</span>
+                </div>
 
-                <p>
-                    Este es un ejemplo de una página adaptable a cualquier
-                    tamaño de pantalla.
-                </p>
+                <div class="mini-map">
+                    <div class="map-grid"></div>
+                    <div class="map-shape shape-one"></div>
+                    <div class="map-shape shape-two"></div>
+                    <div class="map-cross">+</div>
+                    <span class="map-label">SECTOR MAP / 001</span>
+                </div>
 
-                <img src="img/imagen.jpg" alt="Imagen de ejemplo">
-
+                <div class="small-stats">
+                    <div>
+                        <span>CONNECTION</span>
+                        <strong class="green">STABLE</strong>
+                    </div>
+                    <div>
+                        <span>DATA FLOW</span>
+                        <strong>94.8 KB/S</strong>
+                    </div>
+                </div>
             </section>
 
-            <section>
+            <!-- Panel central -->
+            <section class="panel center-panel">
+                <div class="panel-heading">
+                    <span>02 / CENTRAL CORE</span>
+                    <span>UNIT_01</span>
+                </div>
 
-                <h2>Servicios</h2>
+                <div class="hologram">
+                    <div class="orbit orbit-one"></div>
+                    <div class="orbit orbit-two"></div>
+                    <div class="orbit orbit-three"></div>
+                    <div class="orbit orbit-four"></div>
 
-                <p>
-                    Aquí puedes agregar el contenido de tu página.
-                </p>
+                    <div class="crosshair horizontal"></div>
+                    <div class="crosshair vertical"></div>
 
+                    <!-- Holograma CSS sin imágenes externas -->
+                    <div class="human">
+                        <div class="head"></div>
+                        <div class="neck"></div>
+                        <div class="torso"></div>
+                        <div class="arm arm-left"></div>
+                        <div class="arm arm-right"></div>
+                        <div class="leg leg-left"></div>
+                        <div class="leg leg-right"></div>
+                    </div>
+
+                    <span class="coordinate coord-top">X: 024.8</span>
+                    <span class="coordinate coord-left">Y: 091.2</span>
+                    <span class="coordinate coord-right">Z: 004.6</span>
+
+                    <div class="target-label">
+                        <span class="status-dot"></span>
+                        BIO.SYS_UPLINK
+                    </div>
+                </div>
+
+                <div class="core-footer">
+                    <span>SCANNING...</span>
+                    <span>CORE TEMP: 36.8°C</span>
+                    <span>SYNC: 100%</span>
+                </div>
+
+                <div class="intro" id="nosotros">
+                    <span class="eyebrow">WELCOME TO THE SYSTEM</span>
+                    <h1>Explora nuevos <span>horizontes.</span></h1>
+                    <p>
+                        Tecnología, creatividad e innovación conectadas
+                        en una experiencia digital única.
+                    </p>
+                    <a href="#servicios" class="terminal-button">
+                        ACCESS SYSTEM <span>↗</span>
+                    </a>
+                </div>
             </section>
 
+            <!-- Panel derecho -->
+            <aside class="panel right-panel">
+                <div class="panel-heading">
+                    <span>03 / TELEMETRY</span>
+                    <span>ACTIVE</span>
+                </div>
+
+                <section class="data-group">
+                    <h2>VITALS <span>●</span></h2>
+
+                    <div class="metric">
+                        <span>Temperature</span>
+                        <strong class="orange">36.8°C</strong>
+                    </div>
+
+                    <div class="metric">
+                        <span>Pulse</span>
+                        <strong>072 BPM</strong>
+                    </div>
+
+                    <div class="metric">
+                        <span>System load</span>
+                        <strong class="green">42.6%</strong>
+                    </div>
+
+                    <div class="metric">
+                        <span>Signal quality</span>
+                        <strong>98.2%</strong>
+                    </div>
+
+                    <div class="progress">
+                        <span style="width: 72%"></span>
+                    </div>
+                </section>
+
+                <section class="data-group" id="servicios">
+                    <h2>MODULES <span>04</span></h2>
+
+                    <a href="#contacto" class="module-link">
+                        <span>01</span>
+                        <span>Creative Design</span>
+                        <b>↗</b>
+                    </a>
+
+                    <a href="#contacto" class="module-link">
+                        <span>02</span>
+                        <span>Digital Systems</span>
+                        <b>↗</b>
+                    </a>
+
+                    <a href="#contacto" class="module-link">
+                        <span>03</span>
+                        <span>Data Analysis</span>
+                        <b>↗</b>
+                    </a>
+
+                    <a href="#contacto" class="module-link">
+                        <span>04</span>
+                        <span>Innovation Lab</span>
+                        <b>↗</b>
+                    </a>
+                </section>
+
+                <section class="data-group">
+                    <h2>NETWORK STATUS</h2>
+
+                    <div class="network-status">
+                        <span class="status-dot"></span>
+                        ALL SYSTEMS OPERATIONAL
+                    </div>
+
+                    <div class="data-row">
+                        <span>ENCRYPTION</span>
+                        <strong>ACTIVE</strong>
+                    </div>
+
+                    <div class="data-row">
+                        <span>PROTOCOL</span>
+                        <strong>MX-2049</strong>
+                    </div>
+                </section>
+
+                <a href="#contacto" class="contact-button">
+                    ESTABLISH CONNECTION →
+                </a>
+            </aside>
         </main>
 
-        <footer>
-            <p>© 2026 Mi Sitio Web</p>
+        <!-- Panel inferior de gráficas -->
+        <section class="panel bottom-panel">
+            <div class="panel-heading">
+                <span>04 / LIVE MONITORING</span>
+                <span>REAL-TIME DATA</span>
+            </div>
+
+            <div class="monitor-layout">
+                <div class="charts">
+
+                    <div class="chart-row">
+                        <span class="chart-label">RESP.</span>
+                        <div class="wave wave-one"></div>
+                        <span class="chart-value">16 RPM</span>
+                    </div>
+
+                    <div class="chart-row">
+                        <span class="chart-label">HEART</span>
+                        <div class="wave wave-two"></div>
+                        <span class="chart-value">072 BPM</span>
+                    </div>
+
+                    <div class="chart-row">
+                        <span class="chart-label">EEG</span>
+                        <div class="wave wave-three"></div>
+                        <span class="chart-value">ACTIVE</span>
+                    </div>
+
+                    <div class="chart-row">
+                        <span class="chart-label">SIGNAL</span>
+                        <div class="wave wave-four"></div>
+                        <span class="chart-value">98.2%</span>
+                    </div>
+                </div>
+
+                <div class="control-grid">
+                    <button type="button" data-mode="CONNECTION LINK">
+                        CON.LINK
+                    </button>
+                    <button type="button" data-mode="SPO2 ACTIVITY">
+                        SPO.ACT
+                    </button>
+                    <button type="button" data-mode="BIO SYSTEM">
+                        BIO.SYN
+                    </button>
+                    <button type="button" data-mode="EEG ROUTINE">
+                        EEG.RT.
+                    </button>
+                    <button type="button" data-mode="CUP EVALUATION">
+                        CUP.EVG
+                    </button>
+                    <button type="button" data-mode="PULSE TRACKING">
+                        PLS.RT.
+                    </button>
+                </div>
+            </div>
+
+            <div class="bottom-status">
+                <span>SYS.VER 4.09.21</span>
+                <span>SECURE CONNECTION</span>
+                <span id="clock">00:00:00</span>
+            </div>
+        </section>
+
+        <!-- Pie de página -->
+        <footer id="contacto">
+            <span>MUNDO_OS // DIGITAL INTERFACE</span>
+            <span>DESIGNED FOR THE FUTURE <b>◆</b></span>
         </footer>
 
     </div>
 
-    <!-- JavaScript -->
     <script src="js/script.js"></script>
-
 </body>
-
 </html>
