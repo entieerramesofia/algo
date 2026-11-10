@@ -20,7 +20,7 @@
             const speed = fromClick ? Math.random() * 1.8 + .35 : Math.random() * .32 + .06;
             this.vx = Math.cos(angle) * speed;
             this.vy = Math.sin(angle) * speed;
-            this.radius = Math.random() * 1.8 + 2;
+            this.radius = Math.random() * 7 + 12;
             this.color = colors[Math.floor(Math.random() * colors.length)];
             this.phase = Math.random() * Math.PI * 2;
             this.twinkles = Math.random() < .32;
@@ -55,7 +55,7 @@
             context.beginPath();
             context.arc(this.x, this.y, this.radius * pulse, 0, Math.PI * 2);
             context.fillStyle = `rgba(${this.color}, ${pulse})`;
-            context.shadowBlur = 16;
+            context.shadowBlur = 22;
             context.shadowColor = `rgba(${this.color}, .8)`;
             context.fill();
             context.shadowBlur = 0;
