@@ -5,19 +5,27 @@ document.addEventListener("DOMContentLoaded", () => {
     const clock = document.getElementById("clock");
     const cameraPreview = document.getElementById("camera-preview");
 
-    // Solicitar permiso y mostrar la cámara en el panel visual.
-    if (cameraPreview && navigator.mediaDevices?.getUserMedia) {
-        navigator.mediaDevices.getUserMedia({ video: true, audio: false })
-            .then((stream) => {
-                cameraPreview.srcObject = stream;
-            })
-            .catch((error) => {
-                console.error("No se pudo iniciar la cámara:", error);
-                cameraPreview.setAttribute("aria-label", "No se pudo acceder a la cámara");
-            });
-    } else if (cameraPreview) {
-        cameraPreview.setAttribute("aria-label", "La cámara requiere un navegador compatible y una conexión segura");
+    // Solicitar permiso y mostrar la cámara al cargar index.html.
+    async function startCamera() {
+        if (!cameraPreview) return;
+
+        if (!navigator.mediaDevices?.getUserMedia) {
+            cameraPreview.setAttribute("aria-label", "La cámara requiere HTTPS o localhost y un navegador compatible");
+            console.error("La cámara requiere HTTPS o localhost y un navegador compatible.");
+            return;
+        }
+
+        try {
+            const stream = await navigator.mediaDevices.getUserMedia({ video: true, audio: false });
+            cameraPreview.srcObject = stream;
+            await cameraPreview.play();
+        } catch (error) {
+            console.error("No se pudo iniciar la cámara:", error);
+            cameraPreview.setAttribute("aria-label", "Permite el acceso a la cámara para ver la transmisión");
+        }
     }
+
+    startCamera();
 
     // Mostrar la interfaz después de iniciar el sistema
     window.setTimeout(() => {

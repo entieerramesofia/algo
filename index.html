@@ -5,8 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>MUNDO | Futuristic System</title>
-    <link rel="stylesheet" href="css/style.css">
+    <title>MUNDO | 05</title>
+    <link rel="stylesheet" href="css/style.css?v=20261110-4">
 </head>
 
 <body>
@@ -14,7 +14,7 @@
     <div id="loading">
         <div class="loader"></div>
         <p>INICIALIZANDO SISTEMA...</p>
-        <span>PLEASE WAIT // MUNDO OS</span>
+        <span>espere // MUNDO OS</span>
     </div>
 
     <!-- Interfaz principal -->
@@ -22,7 +22,7 @@
 
         <!-- Barra superior -->
         <header class="topbar">
-            <div class="brand">UNIVERSO<span>_OS</span></div>
+            <div class="brand">ANÁLISIS<span>_OS</span></div>
 
             <nav>
                 <a href="#inicio">SYS.OVERVIEW</a>
@@ -48,11 +48,11 @@
                 </div>
 
                 <div class="portrait">
-                    <img src="img/scan2.gif" alt="Animación de escaneo de una persona">
+                    <img src="img/scan3.gif" alt="animación de escaneo de una persona">
 
                     <div class="scan-line"></div>
                     <span class="image-tag">VISUAL_SCAN_001</span>
-                    <span class="image-status">SIGNAL: ACTIVE</span>
+                    <span class="image-status">SIGNAL: ACTIVA</span>
                 </div>
 
                 <div class="mini-map">
@@ -66,7 +66,7 @@
                 <div class="small-stats">
                     <div>
                         <span>CONNECTION</span>
-                        <strong class="green">STABLE</strong>
+                        <strong class="green">ESTABLE</strong>
                     </div>
                     <div>
                         <span>DATA FLOW</span>
@@ -204,75 +204,59 @@
                     </div>
                 </section>
 
+                <!-- Monitoreo debajo del estado de red para liberar el panel central -->
+                <section class="panel bottom-panel">
+                    <div class="panel-heading">
+                        <span>04 / LIVE MONITORING</span>
+                        <span>REAL-TIME DATA</span>
+                    </div>
+
+                    <div class="monitor-layout">
+                        <div class="charts">
+                            <div class="chart-row">
+                                <span class="chart-label">RESP.</span>
+                                <div class="wave wave-one"></div>
+                                <span class="chart-value">16 RPM</span>
+                            </div>
+                            <div class="chart-row">
+                                <span class="chart-label">HEART</span>
+                                <div class="wave wave-two"></div>
+                                <span class="chart-value">072 BPM</span>
+                            </div>
+                            <div class="chart-row">
+                                <span class="chart-label">EEG</span>
+                                <div class="wave wave-three"></div>
+                                <span class="chart-value">ACTIVE</span>
+                            </div>
+                            <div class="chart-row">
+                                <span class="chart-label">SIGNAL</span>
+                                <div class="wave wave-four"></div>
+                                <span class="chart-value">98.2%</span>
+                            </div>
+                        </div>
+
+                        <div class="control-grid">
+                            <button type="button" data-mode="CONNECTION LINK">CON.LINK</button>
+                            <button type="button" data-mode="SPO2 ACTIVITY">SPO.ACT</button>
+                            <button type="button" data-mode="BIO SYSTEM">BIO.SYN</button>
+                            <button type="button" data-mode="EEG ROUTINE">EEG.RT.</button>
+                            <button type="button" data-mode="CUP EVALUATION">CUP.EVG</button>
+                            <button type="button" data-mode="PULSE TRACKING">PLS.RT.</button>
+                        </div>
+                    </div>
+
+                    <div class="bottom-status">
+                        <span>SYS.VER 4.09.21</span>
+                        <span>SECURE CONNECTION</span>
+                        <span id="clock">00:00:00</span>
+                    </div>
+                </section>
+
                 <a href="dos.html" class="contact-button">
                     ESTABLISH CONNECTION →
                 </a>
             </aside>
         </main>
-
-        <!-- Panel inferior de gráficas -->
-        <section class="panel bottom-panel">
-            <div class="panel-heading">
-                <span>04 / LIVE MONITORING</span>
-                <span>REAL-TIME DATA</span>
-            </div>
-
-            <div class="monitor-layout">
-                <div class="charts">
-
-                    <div class="chart-row">
-                        <span class="chart-label">RESP.</span>
-                        <div class="wave wave-one"></div>
-                        <span class="chart-value">16 RPM</span>
-                    </div>
-
-                    <div class="chart-row">
-                        <span class="chart-label">HEART</span>
-                        <div class="wave wave-two"></div>
-                        <span class="chart-value">072 BPM</span>
-                    </div>
-
-                    <div class="chart-row">
-                        <span class="chart-label">EEG</span>
-                        <div class="wave wave-three"></div>
-                        <span class="chart-value">ACTIVE</span>
-                    </div>
-
-                    <div class="chart-row">
-                        <span class="chart-label">SIGNAL</span>
-                        <div class="wave wave-four"></div>
-                        <span class="chart-value">98.2%</span>
-                    </div>
-                </div>
-
-                <div class="control-grid">
-                    <button type="button" data-mode="CONNECTION LINK">
-                        CON.LINK
-                    </button>
-                    <button type="button" data-mode="SPO2 ACTIVITY">
-                        SPO.ACT
-                    </button>
-                    <button type="button" data-mode="BIO SYSTEM">
-                        BIO.SYN
-                    </button>
-                    <button type="button" data-mode="EEG ROUTINE">
-                        EEG.RT.
-                    </button>
-                    <button type="button" data-mode="CUP EVALUATION">
-                        CUP.EVG
-                    </button>
-                    <button type="button" data-mode="PULSE TRACKING">
-                        PLS.RT.
-                    </button>
-                </div>
-            </div>
-
-            <div class="bottom-status">
-                <span>SYS.VER 4.09.21</span>
-                <span>SECURE CONNECTION</span>
-                <span id="clock">00:00:00</span>
-            </div>
-        </section>
 
         <!-- Pie de página -->
         <footer id="contacto">
@@ -282,6 +266,6 @@
 
     </div>
 
-    <script src="js/script.js"></script>
+    <script src="js/script.js?v=20261110-2"></script>
 </body>
 </html>
