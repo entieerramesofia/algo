@@ -43,11 +43,20 @@ h1 em { color: var(--acid); font-weight: 400; }
 @keyframes sweep { to { top: calc(100% - 2px); } }
 .visual-code, .visual-time, .map-label { position: absolute; z-index: 2; color: #e0e6e0; font-size: 8px; line-height: 1.7; letter-spacing: .06em; text-shadow: 0 1px 5px #000; }
 .code-left { top: 18px; left: 14px; }.code-right { top: 18px; right: 14px; text-align: right; }.visual-time { bottom: 10px; left: 14px; }
-.visual-two { background-image: radial-gradient(ellipse at center, #464b48 0, #171a19 38%, #0a0c0c 78%), linear-gradient(#ffffff0d 1px, transparent 1px); }
+.visual-two { background-image: linear-gradient(#c9ff6226 1px, transparent 1px), linear-gradient(90deg, #c9ff6226 1px, transparent 1px), radial-gradient(ellipse at center, #464b48 0, #171a19 38%, #0a0c0c 78%); background-size: 28px 28px, 28px 28px, auto; }
 .map-image { position: absolute; top: 22%; left: 28%; width: 44%; height: 56%; background: radial-gradient(ellipse at 56% 48%, #d6dbd3a6, #8d928c88 14%, #343936 42%, transparent 73%); filter: blur(4px); }
 .signal-map { position: absolute; inset: 0; z-index: 1; width: 100%; height: 100%; overflow: visible; }
 .signal-map path { fill: none; stroke: #e8eee9; stroke-width: 1; vector-effect: non-scaling-stroke; }
 .signal-map circle { fill: #f1f4ef; stroke: #050607; stroke-width: 1; vector-effect: non-scaling-stroke; }
+.planet-marker { position: absolute; z-index: 5; display: flex; align-items: center; gap: 5px; padding: 4px 6px; transform: translate(-50%, -50%); border: 1px solid #c9ff6270; background: #050807dd; color: var(--paper); text-align: left; cursor: grab; touch-action: none; user-select: none; }
+.planet-marker:hover, .planet-marker:focus-visible { border-color: var(--acid); box-shadow: 0 0 12px #c9ff6255; outline: none; }
+.planet-marker.is-dragging { z-index: 6; cursor: grabbing; box-shadow: 0 0 16px #c9ff6280; }
+.planet-marker svg { flex: 0 0 16px; width: 16px; height: 16px; overflow: visible; filter: drop-shadow(0 0 4px #c9ff62aa); }
+.planet-marker svg path { fill: #c9ff6222; stroke: var(--acid); stroke-width: 1.5; vector-effect: non-scaling-stroke; }
+.planet-readout { display: grid; gap: 2px; }
+.planet-readout strong { color: var(--acid); font-size: 7px; font-weight: 400; letter-spacing: .08em; }
+.planet-coordinates { color: #b8c3bb; font-size: 6px; white-space: nowrap; }
+.drag-hint { position: absolute; z-index: 4; top: 10px; right: 12px; color: var(--acid); font-size: 7px; letter-spacing: .08em; text-shadow: 0 1px 5px #000; pointer-events: none; }
 .map-label { z-index: 2; color: var(--paper); }.label-a { top: 22%; left: 22%; }.label-b { top: 66%; left: 48%; }.label-c { top: 33%; right: 16%; }
 .panel-copy { min-height: 105px; padding: 13px 14px; }
 .copy-label { display: flex; justify-content: space-between; color: var(--acid); font-size: 8px; letter-spacing: .1em; }

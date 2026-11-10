@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="theme-color" content="#050607">
     <title>Archivo de señales | MUNDO O5</title>
-    <link rel="stylesheet" href="css/nueva.css?v=20261110-3">
+    <link rel="stylesheet" href="css/nueva.css?v=20261110-4">
 </head>
 <body>
     <main class="archive">
@@ -17,10 +17,11 @@
 
         <section class="title-row">
             <div>
-                <p class="eyebrow">CENTRO DE ANÁLISIS <span>//</span> REGISTRO 001</p>
-                <h1>Señal <em>capturada</em></h1>
+                <p class="eyebrow">CENTRO DE ANÁLISIS <span>//</span> REGISTRO \[
+U=(x,y,z,t,/\)\]</p>
+                <h1>COORDENADAS <em>capturadas</em></h1>
             </div>
-            <p class="title-note">DOS CANALES DISPONIBLES<br>SELECCIONA Y COMPLETA EL REGISTRO</p>
+            <p class="title-note">CANALES DISPONIBLES<br>SELECCIONA Y COMPLETA EL REGISTRO</p>
         </section>
 
         <div class="sections">
@@ -39,25 +40,38 @@
                     <div class="copy-label"><span>universo</span><span>01—A</span></div>
                     <textarea class="text-space" aria-label="Texto del primer apartado" placeholder="Escribe aquí el texto del primer apartado."></textarea>
                 </div>
-                <footer class="panel-foot is-active"><span class="active-state">ESTADO: ACTIVO</span><span class="activity-pips" aria-label="Actividad"><i>●</i><i>●</i><i>●</i><i>○</i><i>○</i></span></footer>
+                <footer class="panel-foot"><span>ESTADO: EN ESPERA</span><span>●●●○○</span><a class="video-link" href="img/viaje.mp4" target="_blank" rel="noopener noreferrer">VER VIAJE ↗</a></footer>
             </section>
 
             <section class="data-panel" id="registro">
                 <header class="panel-head"><span>02 / MAPA DE SEÑAL</span><span>ANÁLISIS <i></i></span></header>
-                <div class="visual visual-two" aria-hidden="true">
+                <div class="visual visual-two" role="group" aria-label="Campo vectorial. Arrastra los marcadores planetarios para moverlos y actualizar sus coordenadas.">
                     <div class="map-image"></div>
                     <svg class="signal-map" viewBox="0 0 600 280" preserveAspectRatio="none">
                         <path d="M26 151 145 76 247 113 302 138 408 80 566 151M145 76 176 232 302 138 417 232 408 80M26 151 176 232 247 113 417 232 566 151M247 113 302 138 408 80" />
                         <circle cx="26" cy="151" r="4"/><circle cx="145" cy="76" r="4"/><circle cx="176" cy="232" r="4"/><circle cx="247" cy="113" r="4"/><circle cx="302" cy="138" r="4"/><circle cx="408" cy="80" r="4"/><circle cx="417" cy="232" r="4"/><circle cx="566" cy="151" r="4"/>
                     </svg>
+                    <button class="planet-marker" type="button" style="left: 15%; top: 36%;" data-planet="MARTE" aria-label="Arrastra el marcador de Marte">
+                        <svg viewBox="0 0 24 22" aria-hidden="true"><path d="M12 1 23 21H1Z"/></svg>
+                        <span class="planet-readout"><strong>UNIVERSO 0042</strong><small class="planet-coordinates"></small></span>
+                    </button>
+                    <button class="planet-marker" type="button" style="left: 51%; top: 57%;" data-planet="TIERRA" aria-label="Arrastra el marcador de Tierra">
+                        <svg viewBox="0 0 24 22" aria-hidden="true"><path d="M12 1 23 21H1Z"/></svg>
+                        <span class="planet-readout"><strong>UNIVERSO 003</strong><small class="planet-coordinates"></small></span>
+                    </button>
+                    <button class="planet-marker" type="button" style="left: 84%; top: 35%;" data-planet="VENUS" aria-label="Arrastra el marcador de Venus">
+                        <svg viewBox="0 0 24 22" aria-hidden="true"><path d="M12 1 23 21H1Z"/></svg>
+                        <span class="planet-readout"><strong>UNIVERSO 005</strong><small class="planet-coordinates"></small></span>
+                    </button>
                     <span class="map-label label-a">A / 03</span><span class="map-label label-b">B / 07</span><span class="map-label label-c">C / 10</span>
+                    <span class="drag-hint">RESONANCIA DIMENSIONAL R = 1/2 * 3.1416 √ 299.792.458 * 𝐿 = 14⋅𝜋2⋅𝑓2⋅𝐶 / ESCRIBA COORDENADAS</span>
                     <span class="visual-time">VECTOR FIELD &nbsp; // &nbsp; 00:04:26</span>
                 </div>
                 <div class="panel-copy">
                     <div class="copy-label"><span>detalles:</span><span>02—B</span></div>
                     <textarea class="text-space" aria-label="Texto del segundo apartado" placeholder="Escribe aquí el texto del segundo apartado."></textarea>
                 </div>
-                <footer class="panel-foot"><span>ESTADO: EN ESPERA</span><span class="activity-pips" aria-label="Actividad"><i>●</i><i>●</i><i>●</i><i>○</i><i>○</i></span><a class="video-link" href="img/viaje.mp4" target="_blank" rel="noopener noreferrer">VER VIAJE ↗</a></footer>
+                <footer class="panel-foot is-active"><span class="active-state">ESTADO: ACTIVO</span><span class="activity-pips" aria-label="Actividad"><i>●</i><i>●</i><i>●</i><i>○</i><i>○</i></span></footer>
             </section>
         </div>
 
@@ -85,6 +99,61 @@
             } catch (error) {
                 // La imagen sigue cambiando de forma aleatoria sin almacenamiento de sesión.
             }
+
+            const field = document.querySelector(".visual-two");
+            const markers = field.querySelectorAll(".planet-marker");
+            let activeMarker = null;
+
+            function updateCoordinates(marker) {
+                const xPercent = Number.parseFloat(marker.style.left);
+                const yPercent = Number.parseFloat(marker.style.top);
+                const x = (xPercent * 3.6).toFixed(1).padStart(5, "0");
+                const y = (yPercent * 1.8).toFixed(1).padStart(5, "0");
+                const z = ((xPercent + yPercent) * 0.73).toFixed(1).padStart(5, "0");
+                marker.querySelector(".planet-coordinates").textContent = `X:${x} Y:${y} Z:${z}`;
+                marker.setAttribute("aria-label", `Arrastra ${marker.dataset.planet}. Coordenadas X ${x}, Y ${y}, Z ${z}.`);
+            }
+
+            markers.forEach((marker) => {
+                updateCoordinates(marker);
+
+                marker.addEventListener("pointerdown", (event) => {
+                    event.preventDefault();
+                    activeMarker = marker;
+                    marker.classList.add("is-dragging");
+                    marker.setPointerCapture(event.pointerId);
+                });
+
+                marker.addEventListener("pointermove", (event) => {
+                    if (activeMarker !== marker) return;
+
+                    const bounds = field.getBoundingClientRect();
+                    const x = Math.max(5, Math.min(95, ((event.clientX - bounds.left) / bounds.width) * 100));
+                    const y = Math.max(14, Math.min(82, ((event.clientY - bounds.top) / bounds.height) * 100));
+                    marker.style.left = `${x}%`;
+                    marker.style.top = `${y}%`;
+                    updateCoordinates(marker);
+                });
+
+                const stopDragging = () => {
+                    marker.classList.remove("is-dragging");
+                    if (activeMarker === marker) activeMarker = null;
+                };
+                marker.addEventListener("pointerup", stopDragging);
+                marker.addEventListener("pointercancel", stopDragging);
+
+                marker.addEventListener("keydown", (event) => {
+                    const steps = { ArrowLeft: [-1, 0], ArrowRight: [1, 0], ArrowUp: [0, -1], ArrowDown: [0, 1] };
+                    const step = steps[event.key];
+                    if (!step) return;
+                    event.preventDefault();
+                    const x = Math.max(5, Math.min(95, Number.parseFloat(marker.style.left) + step[0]));
+                    const y = Math.max(14, Math.min(82, Number.parseFloat(marker.style.top) + step[1]));
+                    marker.style.left = `${x}%`;
+                    marker.style.top = `${y}%`;
+                    updateCoordinates(marker);
+                });
+            });
         })();
     </script>
 </body>
