@@ -20,7 +20,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     updateClock();
-    window.setInterval(updateClock, 1000);
+    window.setInterval(updateClock, 5000);
 
     // Botones del panel de control
     const controlButtons = document.querySelectorAll(
