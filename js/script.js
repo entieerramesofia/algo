@@ -3,6 +3,21 @@ document.addEventListener("DOMContentLoaded", () => {
     const loading = document.getElementById("loading");
     const dashboard = document.getElementById("page-content");
     const clock = document.getElementById("clock");
+    const cameraPreview = document.getElementById("camera-preview");
+
+    // Solicitar permiso y mostrar la cámara en el panel visual.
+    if (cameraPreview && navigator.mediaDevices?.getUserMedia) {
+        navigator.mediaDevices.getUserMedia({ video: true, audio: false })
+            .then((stream) => {
+                cameraPreview.srcObject = stream;
+            })
+            .catch((error) => {
+                console.error("No se pudo iniciar la cámara:", error);
+                cameraPreview.setAttribute("aria-label", "No se pudo acceder a la cámara");
+            });
+    } else if (cameraPreview) {
+        cameraPreview.setAttribute("aria-label", "La cámara requiere un navegador compatible y una conexión segura");
+    }
 
     // Mostrar la interfaz después de iniciar el sistema
     window.setTimeout(() => {
@@ -20,7 +35,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     updateClock();
-    window.setInterval(updateClock, 5000);
+    window.setInterval(updateClock, 9000);
 
     // Botones del panel de control
     const controlButtons = document.querySelectorAll(

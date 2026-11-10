@@ -12,8 +12,30 @@ body { overflow: hidden; background: #03070d; color: #e2f4f4; font-family: 'Shar
 .back-link:hover { color: var(--mint); }
 .intro { position: absolute; top: 50%; left: clamp(35px, 12vw, 190px); width: min(440px, 70vw); transform: translateY(-43%); text-shadow: 0 2px 20px #03070d; }
 .eyebrow { color: var(--mint); font-size: 9px; letter-spacing: 1.4px; }
-.eyebrow i { display: inline-block; width: 6px; height: 6px; margin-right: 7px; border-radius: 50%; background: var(--mint); box-shadow: 0 0 10px var(--mint); }
-h1 { margin: 22px 0 14px; font-size: clamp(38px, 6.5vw, 76px); font-weight: 400; line-height: .98; letter-spacing: -3px; }
+.eyebrow i {
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    margin-right: 7px;
+    border-radius: 50%;
+    background: var(--mint);
+    box-shadow: 0 0 10px var(--mint);
+    animation: status-blink 1.4s ease-in-out infinite;
+}
+
+@keyframes status-blink {
+    0%, 100% {
+        opacity: 1;
+        transform: scale(1);
+        box-shadow: 0 0 4px var(--mint), 0 0 10px var(--mint);
+    }
+
+    50% {
+        opacity: .35;
+        transform: scale(.75);
+        box-shadow: 0 0 2px var(--mint), 0 0 5px var(--mint);
+    }
+}h1 { margin: 22px 0 14px; font-size: clamp(38px, 6.5vw, 76px); font-weight: 400; line-height: .98; letter-spacing: -3px; }
 h1 span { color: var(--mint); }
 .intro p { color: #9bb7bd; font-size: 12px; line-height: 1.9; }
 .readout { display: flex; gap: 24px; margin-top: 33px; padding-top: 12px; border-top: 1px solid #72d7cb44; color: #72929a; font-size: 8px; letter-spacing: 1px; }
@@ -23,7 +45,7 @@ h1 span { color: var(--mint); }
 .mouse-hint { position: absolute; right: 52px; bottom: 43px; color: #7798a0; font-size: 8px; letter-spacing: 1px; }
 .mouse-hint span { margin-left: 8px; color: var(--pink); font-size: 14px; }
 @media (max-width: 600px) {
-    .particle-ui::before { inset: 9px; }
+    .particle-ui::before { inset: 18px; }
     .back-link { top: 28px; left: 27px; font-size: 8px; }
     .intro { left: 9vw; width: 82vw; transform: translateY(-38%); }
     h1 { font-size: clamp(42px, 12vw, 66px); letter-spacing: -2px; }

@@ -20,9 +20,10 @@
             const speed = fromClick ? Math.random() * 1.8 + .35 : Math.random() * .32 + .06;
             this.vx = Math.cos(angle) * speed;
             this.vy = Math.sin(angle) * speed;
-            this.radius = Math.random() * 1.5 + .6;
+            this.radius = Math.random() * 1.8 + 2;
             this.color = colors[Math.floor(Math.random() * colors.length)];
             this.phase = Math.random() * Math.PI * 2;
+            this.twinkles = Math.random() < .32;
             this.life = fromClick ? 180 : Infinity;
         }
 
@@ -50,11 +51,11 @@
         }
 
         draw() {
-            const pulse = .72 + Math.sin(this.phase) * .28;
+            const pulse = this.twinkles ? .45 + (Math.sin(this.phase) + 1) * .275 : 1;
             context.beginPath();
             context.arc(this.x, this.y, this.radius * pulse, 0, Math.PI * 2);
             context.fillStyle = `rgba(${this.color}, ${pulse})`;
-            context.shadowBlur = 12;
+            context.shadowBlur = 16;
             context.shadowColor = `rgba(${this.color}, .8)`;
             context.fill();
             context.shadowBlur = 0;
@@ -87,7 +88,7 @@
                     context.moveTo(first.x, first.y);
                     context.lineTo(second.x, second.y);
                     context.strokeStyle = `rgba(107, 221, 212, ${(1 - distance / 105) * .23})`;
-                    context.lineWidth = .7;
+                    context.lineWidth = 6;
                     context.stroke();
                 }
             }
@@ -138,12 +139,23 @@
         pointer.x = event.clientX;
         pointer.y = event.clientY;
         pointer.active = true;
+        const overParticle = particles.some((particle) =>
+            Math.hypot(pointer.x - particle.x, pointer.y - particle.y) < Math.max(12, particle.radius + 8)
+        );
+        canvas.style.cursor = overParticle ? 'pointer' : 'default';
     }
 
     canvas.addEventListener('pointermove', setPointer);
     canvas.addEventListener('pointerleave', () => { pointer.active = false; });
     canvas.addEventListener('pointerdown', (event) => {
         setPointer(event);
+        const hitParticle = particles.some((particle) =>
+            Math.hypot(pointer.x - particle.x, pointer.y - particle.y) < Math.max(12, particle.radius + 8)
+        );
+        if (hitParticle) {
+            window.location.assign('nueva.html');
+            return;
+        }
         pulses.push({ x: pointer.x, y: pointer.y, radius: 2, alpha: .8 });
         for (let i = 0; i < 12; i++) particles.push(new Particle(pointer.x, pointer.y, true));
         counter.textContent = String(particles.length).padStart(3, '0');
