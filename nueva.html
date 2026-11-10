@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="theme-color" content="#050607">
     <title>Archivo de señales | MUNDO O5</title>
-    <link rel="stylesheet" href="css/nueva.css">
+    <link rel="stylesheet" href="css/nueva.css?v=20261110-1">
 </head>
 <body>
     <main class="archive">
@@ -26,7 +26,8 @@
         <div class="sections">
             <section class="data-panel" id="archivo">
                 <header class="panel-head"><span>01 / ARCHIVO VISUAL</span><span>LIVE FEED <i></i></span></header>
-                <div class="visual visual-one" aria-hidden="true">
+                <div class="visual visual-one" role="group" aria-label="Archivo visual con imagen aleatoria">
+                    <img class="archive-image" id="archive-image" src="img/imagen/a.jpg" alt="Imagen aleatoria del archivo visual">
                     <div class="frame-corners"></div>
                     <div class="reticle"><span></span><i></i><b></b></div>
                     <div class="scan-beam"></div>
@@ -60,7 +61,31 @@
             </section>
         </div>
 
-        <footer class="page-foot"><span>MUNDO_OS // UNIDAD DE INVESTIGACIÓN</span><span>FIN DE REGISTRO <b>✳</b></span></footer>
+        <footer class="page-foot"><span>MUNDO_OS // UNIDAD DE INVESTIGACIÓN</span><span><b>✳</b></span></footer>
     </main>
+    <script>
+        (() => {
+            const images = ["a.jpg", "b.jpg", "c.jpg", "d.jpg", "e.jpg"];
+            const storageKey = "archivo-visual-imagen-anterior";
+            const image = document.getElementById("archive-image");
+            let previousImage = "";
+
+            try {
+                previousImage = sessionStorage.getItem(storageKey) || "";
+            } catch (error) {
+                // Si el almacenamiento de sesión está bloqueado, se elige una imagen aleatoria igualmente.
+            }
+
+            const options = images.filter((name) => name !== previousImage);
+            const selectedImage = options[Math.floor(Math.random() * options.length)];
+            image.src = `img/imagen/${selectedImage}`;
+
+            try {
+                sessionStorage.setItem(storageKey, selectedImage);
+            } catch (error) {
+                // La imagen sigue cambiando de forma aleatoria sin almacenamiento de sesión.
+            }
+        })();
+    </script>
 </body>
 </html>
